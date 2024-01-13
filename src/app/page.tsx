@@ -207,7 +207,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className='h-[40px] w-[90%] flex justify-center items-center rounded bg-[blue] cursor-pointer opacity-60'><p className='text-[13px] text-[#fff] font-semibold'>Update</p></div>
-                <p className='text-[12px] font-semibold mt-1 text-[blue]'>View Help Docs!</p>
+                <p className='text-[12px] font-semibold mt-1 text-[blue]'>View Help Docs!!</p>
               </div>
             </div>
           </div>
