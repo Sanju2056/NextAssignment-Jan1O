@@ -2,6 +2,7 @@
 import { faBell, faHouse, faMagnifyingGlass, faUser, faArrowRightFromBracket, faSquarePollHorizontal, faEnvelope, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
+import { useState } from 'react'
 export default function Home() {
   const RecentTransactionCardItems = [
     { date: "2056-03-23", info: "Withdrawal Transfer to Bank-XXX11" },
@@ -54,10 +55,36 @@ export default function Home() {
       </div>
     )
   }
+  const SliderValue = [
+    "Employee Contribution",
+    "Retirement Age ",
+  ]
+  const Slider = ({ item }) => {
+    const [sliderValue, setSliderValue] = useState('55')
+    const handleSlider = (e) => {
+      setSliderValue(e.target.value)
+    }
+    return (<>
+      <p className='text-[12px] font-semibold'>{item}</p>
+      <div className='flex items-center '>
+        <div className='h-[40px] w-[80%]  flex justify-center items-center'>
+          <input
+            className='h-[20px] w-[100%]'
+            type='range' min={0} max={100} value={sliderValue} onChange={handleSlider}
+          />
+        </div>
+        <div className='h-[max-content] p-1.5 rounded ml-2 w-[max-content] bg-[#fff] flex justify-center items-center'>
+          <p className='text-[10px] font-semibold'>{sliderValue}%</p>
+        </div>
+      </div>
+    </>
+    )
+  }
+
   return (
     <div className='h-screen w-[100%] bg-[lightgrey] flex justify-center items-center'>
-      <div className='h-[98%] w-[100%]  flex justify-center '>
-        <div className='h-[100%] w-[60px] bg-[#fafafa] flex flex-col rounded '>
+      <div className='h-[100%] w-[100%]  flex justify-center '>
+        <div className='h-[100%] w-[60px] bg-[#fafafa] flex flex-col '>
           <div className='h-[20%] w-[100%]  flex flex-col justify-center items-center gap-[30px] cursor-pointer font-bold'>
             <div className='h-[35px] w-[35px]'>
               <img src='/butterfly.png' />
@@ -75,8 +102,8 @@ export default function Home() {
             <FontAwesomeIcon icon={faArrowRightFromBracket} className='h-[18px] w-[18px] text-[gray]' />
           </div>
         </div>
-        <div className='h-[100%] w-[17%] bg-[#f4f4f5] flex justify-center items-center'>
-          <div className='h-[100%] w-[80%] '>
+        <div className='h-[100%] w-[20%] bg-[#f4f4f5] flex justify-center items-center'>
+          <div className='h-[100%] w-[70%]  '>
             <div className='h-[140px] w-[100%] flex gap-[15px] items-center'>
               <div className='h-[70px] w-[70px] rounded-full bg-[red] overflow-hidden'>
                 <img
@@ -113,7 +140,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className='h-[100%] w-[48%] bg-[#fafafa] flex flex-col items-center'>
+        <div className='h-[100%] w-[58%] bg-[#fafafa] flex flex-col items-center'>
           <div className='h-[100%] w-[80%]'>
             <div className='h-[100px] mt-6 w-[100%] flex  justify-center flex-col '>
               <p className='text-[12px] text-[blue] font-bold'>Retirement Income</p>
@@ -155,7 +182,44 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className='h-[100%] w-[27%] '>af</div>
+        <div className='h-[100%] w-[27%] bg-[#fafafa] gap-8 flex pt-10 flex-col'>
+          <div className='h-[53%] w-[75%] bg-[#f4f4f5]  rounded flex items-center justify-center'>
+            <div className='h-[90%] w-[80%]'>
+              <div className='h-[max-content] mb-4  w-[100%]'>
+                <p className='text-[16px] font-semibold'>Retirement Strategy</p>
+                <div className='h-[max-content] w-[100%] py-2 border-lightgrey border-b-2 '>
+                  {
+                    SliderValue.map((item, index) => {
+                      return (<Slider item={item} key={index} />)
+                    })
+                  }
+                </div>
+              </div>
+              <div className=' flex flex-col gap-3 items-center'>
+                <div className='w-[100%] gap-2 flex flex-col'>
+                  <div className='flex items-center justify-between'>
+                    <p className='text-[12px] font-semibold'>Employment Opportunities</p>
+                    <p className='text-[12px] font-semibold'>8.4%</p>
+                  </div>
+                  <div className='flex items-center justify-between'>
+                    <p className='text-[12px] font-semibold'>Interest Rate</p>
+                    <p className='text-[12px] font-semibold'>6%</p>
+                  </div>
+                </div>
+                <div className='h-[40px] w-[90%] flex justify-center items-center rounded bg-[blue] cursor-pointer opacity-60'><p className='text-[13px] text-[#fff] font-semibold'>Update</p></div>
+                <p className='text-[12px] font-semibold mt-1 text-[blue]'>View Help Docs!</p>
+              </div>
+            </div>
+          </div>
+          <div className='h-[200px] w-[75%]  flex justify-center'>
+            <div className='w-[100%] h-[max-content] pl-6 border-[#4f46e5] border-l-2 flex flex-col'>
+              <p className='text-[15px]  font-medium'>Are you considering a </p>
+              <p className='text-[13px] font-bold'>Housing Advance?</p>
+              <p className='text-[11px] opacity-50 font-semibold'>Limited time reduced interest</p>
+              <p className='text-[10px] text-[blue] font-bold mt-2'>Learn More!</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
